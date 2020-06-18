@@ -234,8 +234,8 @@ for w in wafer_names:#[:1]:
     # model
     # =============================================================================
     model = BaseModel(C_measure=1, C_meta=1, perc=60).fit(*train_x, train_y)
-    # _,pred = model.predict(*test_x, test_y)
-    pred = model.decision_function(*test_x, test_y, alpha=0.8)
+    # _,pred = model.predict(*test_x, test_y)  # direct prediction
+    pred = model.decision_function(*test_x, test_y, alpha=0.8)  # fusion prediction
 
     # record high ranked features
     sup = train_x[0].columns[model.measure_ind][model.selector_support()].get_level_values(1)
